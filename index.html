@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Youtri — parent company of MADSCIEN X5</title>
+<meta name="description" content="Youtri is the company behind MADSCIEN X5, a language model whose every layer runs a 7-step physics, chemistry and maths pipeline.">
+<meta property="og:title" content="Youtri">
+<meta property="og:description" content="Youtri is the parent company of MADSCIEN X5, a physics-shaped language model.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3C16 3 6 15 6 21a10 10 0 0020 0C26 15 16 3 16 3z' fill='%23e10600'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0a0a0a;--paper:#fff;--red:#e10600;--wash1:#9fd3ef;--wash2:#c7e6f5;--drop:#3b9fd6;--line:rgba(10,10,10,.14)}
+@media (prefers-color-scheme:dark){:root{--ink:#f5f5f5;--paper:#0a0a0a;--wash1:#1d5f86;--wash2:#16435e;--drop:#7cc4ee;--line:rgba(245,245,245,.18)}}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font:700 12px/1.55 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  -webkit-font-smoothing:antialiased;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom);overflow-x:hidden}
+.wash{position:fixed;inset:0;z-index:0;pointer-events:none;filter:url(#wc)}
+.wash i{position:absolute;border-radius:50%;mix-blend-mode:multiply;opacity:.55}
+@media (prefers-color-scheme:dark){.wash i{mix-blend-mode:screen;opacity:.35}}
+.wash i:nth-child(1){width:60vw;height:60vw;left:-15vw;top:-18vw;background:radial-gradient(circle,var(--wash1),transparent 68%)}
+.wash i:nth-child(2){width:50vw;height:50vw;right:-14vw;top:30vh;background:radial-gradient(circle,var(--wash2),transparent 70%)}
+.wash i:nth-child(3){width:34vw;height:34vw;left:30vw;bottom:-12vw;background:radial-gradient(circle,rgba(225,6,0,.22),transparent 70%)}
+main{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:28px 22px 64px}
+nav{display:flex;justify-content:space-between;align-items:center;letter-spacing:.14em;text-transform:uppercase;font-size:10.5px}
+nav b{display:flex;align-items:center;gap:8px}
+nav b:before{content:"";width:8px;height:11px;background:var(--red);border-radius:50% 50% 50% 50%/62% 62% 38% 38%}
+nav a{color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--red)}
+h1{font-weight:800;font-size:clamp(26px,6.4vw,44px);line-height:1.08;letter-spacing:-.025em;margin:72px 0 18px;max-width:15em}
+h1 em{font-style:normal;color:var(--red)}
+.sub{max-width:34em;opacity:.8;font-size:12.5px}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.btn{font:inherit;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:11px 16px;border-radius:99px;
+  border:1.5px solid var(--ink);color:var(--ink);background:transparent;text-decoration:none;cursor:pointer;transition:.2s}
+.btn.red{background:var(--red);border-color:var(--red);color:#fff}
+.btn:hover{transform:translateY(-1px)}
+section{margin-top:92px}
+.lab{color:var(--red);letter-spacing:.16em;text-transform:uppercase;font-size:10.5px;margin-bottom:14px}
+h2{font-weight:800;font-size:19px;letter-spacing:-.015em;margin-bottom:22px;max-width:22em}
+.row{display:grid;grid-template-columns:30px 1fr;gap:6px 12px;padding:13px 0;border-top:1px solid var(--line)}
+.row:last-child{border-bottom:1px solid var(--line)}
+.row span{color:var(--red);font-size:11px}
+.row p{opacity:.72;font-size:11.5px;grid-column:2}
+.row h3{font-size:12.5px;font-weight:800}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+.card{position:relative;padding:16px;border:1.5px solid var(--ink);border-radius:14px;background:color-mix(in srgb,var(--paper) 78%,transparent);backdrop-filter:blur(3px)}
+.card h3{font-size:12.5px;font-weight:800;margin:8px 0 5px}
+.card p{opacity:.72;font-size:11.5px}
+.tag{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;display:inline-flex;align-items:center;gap:6px}
+.tag:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--drop)}
+.tag.todo:before{background:var(--red)}
+.ph{color:var(--red)}
+footer{margin-top:90px;padding-top:16px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:10.5px;opacity:.7}
+.w{position:relative;display:inline-block}
+.drop{position:absolute;top:92%;width:5px;height:7px;margin-left:-2.5px;border-radius:50% 50% 50% 50%/65% 65% 35% 35%;
+  background:var(--drop);opacity:0;transform-origin:top;animation:drip 5s ease-in infinite;pointer-events:none}
+.drop.r{background:var(--red)}
+@keyframes drip{0%{opacity:0;transform:translateY(-3px) scale(.3)}12%{opacity:.95;transform:none}
+  42%{opacity:.95;transform:translateY(2px) scaleY(2.1)}100%{opacity:0;transform:translateY(var(--fall,90px)) scaleY(1.3)}}
+@media (prefers-reduced-motion:reduce){.drop{display:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="wc" x="-10%" y="-10%" width="120%" height="120%">
+<feTurbulence type="fractalNoise" baseFrequency=".012" numOctaves="3" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="46"/><feGaussianBlur stdDeviation="6"/></filter></svg>
+<div class="wash" aria-hidden="true"><i></i><i></i><i></i></div>
+
+<main>
+<nav><b>Youtri</b><a href="#ask">Funding</a></nav>
+
+<h1 data-drip>Youtri builds AI shaped like <em>physics</em>.</h1>
+<p class="sub">Youtri is the parent company of MADSCIEN, a language model whose every layer runs a 7-step pipeline: charge, conservation, induction, calculus, bonding, singularity and self-evolution. Code it writes is checked by execution, not by trust.</p>
+<div class="cta"><a class="btn red" href="#pipeline">See our product</a><a class="btn" href="mailto:you@example.com?subject=Youtri%20deck">Request the deck</a></div>
+
+<section id="pipeline">
+<div class="lab">01 · Our product · MADSCIEN X5</div>
+<h2 data-drip>Seven steps, one point.</h2>
+<div class="row"><span>01</span><h3>Field filter</h3><p>Words become charges. Coulomb flux ranks them and a Gauss gate keeps the strongest. The rest is earthed.</p></div>
+<div class="row"><span>02</span><h3>Conservation check</h3><p>An orthogonal rotation plus torque, then an angular impulse restores the moment L.</p></div>
+<div class="row"><span>03</span><h3>Logic induction</h3><p>Faraday's law along the sequence: e = −dΦ/dt turns change into new features.</p></div>
+<div class="row"><span>04</span><h3>Solve</h3><p>Every subset is a case. Bayes weights them, the King property integrates, complex phasors carry the phase.</p></div>
+<div class="row"><span>05</span><h3>Chemistry filter</h3><p>Molecular-orbital bond order and 3° &gt; 2° &gt; 1° stability remove unstable candidates.</p></div>
+<div class="row"><span>06</span><h3>Singularity core</h3><p>All survivors compress into a single vector.</p></div>
+<div class="row"><span>07</span><h3>Self-evolution</h3><p>The model updates itself on a physics loss, with bounded self-adaptation.</p></div>
+</section>
+
+<section>
+<div class="lab">02 · Status today</div>
+<h2 data-drip>What exists, stated plainly.</h2>
+<div class="grid card-grid">
+<div class="card"><span class="tag">Built · tested</span><h3>NumPy reference</h3><p>The full algorithm as a runnable model, with invariant checks.</p></div>
+<div class="card"><span class="tag">Built · tests included</span><h3>PyTorch LM</h3><p>Causal, differentiable, with a test that matches the NumPy algorithm exactly.</p></div>
+<div class="card"><span class="tag">Built · tested</span><h3>Verified code pipeline</h3><p>Execution-checked tasks, a sandboxed runner, pass@k, bracket-safe decoding.</p></div>
+<div class="card"><span class="tag todo">Next</span><h3>Training at scale</h3><p>Benchmarks and scaling results. <span class="ph">[ADD YOUR RESULTS]</span></p></div>
+</div>
+</section>
+
+<section id="ask">
+<div class="lab">03 · The ask</div>
+<h2 data-drip>Compute, evaluation, team.</h2>
+<div class="row"><span>A</span><h3>Youtri is raising <b class="ph">[AMOUNT]</b></h3><p>Stage: <span class="ph">[PRE-SEED / SEED]</span>. Runway: <span class="ph">[MONTHS]</span>.</p></div>
+<div class="row"><span>B</span><h3>Training runs</h3><p>Scale the model on verified synthetic and real data. <span class="ph">[% OF FUNDS]</span></p></div>
+<div class="row"><span>C</span><h3>Benchmarks</h3><p>Public evaluation against baselines of the same size. <span class="ph">[% OF FUNDS]</span></p></div>
+<div class="row"><span>D</span><h3>Team</h3><p>Hire research and infrastructure engineers. <span class="ph">[% OF FUNDS]</span></p></div>
+<div class="cta"><a class="btn red" href="mailto:you@example.com?subject=Youtri%20funding">Talk to us</a></div>
+</section>
+
+<footer><span>© <span id="y"></span> Youtri · MADSCIEN is a Youtri product</span><span>you@example.com</span></footer>
+</main>
+
+<script>
+document.getElementById('y').textContent=new Date().getFullYear();
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var rnd=function(a,b){return a+Math.random()*(b-a)};
+  function drop(host,left){
+    var d=document.createElement('i');d.className='drop'+(Math.random()<.22?' r':'');
+    d.style.left=left;d.style.animationDelay=rnd(0,7)+'s';d.style.animationDuration=rnd(4,7.5)+'s';
+    d.style.setProperty('--fall',rnd(60,150)+'px');host.appendChild(d);
+  }
+  document.querySelectorAll('[data-drip]').forEach(function(el){
+    el.innerHTML=el.textContent.trim().split(' ').map(function(w){return '<span class="w">'+w+'</span>'}).join(' ');
+    el.querySelectorAll('.w').forEach(function(w){if(Math.random()<.55)drop(w,rnd(20,80)+'%')});
+  });
+  document.querySelectorAll('.card').forEach(function(c){drop(c,'14px');drop(c,'calc(100% - 14px)')});
+  document.querySelectorAll('.card').forEach(function(c){c.style.overflow='visible'});
+})();
+</script>
+</body>
+</html>
