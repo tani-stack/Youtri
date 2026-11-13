@@ -1,134 +1,84 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Youtri — parent company of MADSCIEN X5</title>
-<meta name="description" content="Youtri is the company behind MADSCIEN X5, a language model whose every layer runs a 7-step physics, chemistry and maths pipeline.">
-<meta property="og:title" content="Youtri">
-<meta property="og:description" content="Youtri is the parent company of MADSCIEN X5, a physics-shaped language model.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3C16 3 6 15 6 21a10 10 0 0020 0C26 15 16 3 16 3z' fill='%23e10600'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800&display=swap" rel="stylesheet">
-<style>
-:root{--ink:#0a0a0a;--paper:#fff;--red:#e10600;--wash1:#9fd3ef;--wash2:#c7e6f5;--drop:#3b9fd6;--line:rgba(10,10,10,.14)}
-@media (prefers-color-scheme:dark){:root{--ink:#f5f5f5;--paper:#0a0a0a;--wash1:#1d5f86;--wash2:#16435e;--drop:#7cc4ee;--line:rgba(245,245,245,.18)}}
-*{box-sizing:border-box;margin:0}
-html{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font:700 12px/1.55 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  -webkit-font-smoothing:antialiased;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom);overflow-x:hidden}
-.wash{position:fixed;inset:0;z-index:0;pointer-events:none;filter:url(#wc)}
-.wash i{position:absolute;border-radius:50%;mix-blend-mode:multiply;opacity:.55}
-@media (prefers-color-scheme:dark){.wash i{mix-blend-mode:screen;opacity:.35}}
-.wash i:nth-child(1){width:60vw;height:60vw;left:-15vw;top:-18vw;background:radial-gradient(circle,var(--wash1),transparent 68%)}
-.wash i:nth-child(2){width:50vw;height:50vw;right:-14vw;top:30vh;background:radial-gradient(circle,var(--wash2),transparent 70%)}
-.wash i:nth-child(3){width:34vw;height:34vw;left:30vw;bottom:-12vw;background:radial-gradient(circle,rgba(225,6,0,.22),transparent 70%)}
-main{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:28px 22px 64px}
-nav{display:flex;justify-content:space-between;align-items:center;letter-spacing:.14em;text-transform:uppercase;font-size:10.5px}
-nav b{display:flex;align-items:center;gap:8px}
-nav b:before{content:"";width:8px;height:11px;background:var(--red);border-radius:50% 50% 50% 50%/62% 62% 38% 38%}
-nav a{color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--red)}
-h1{font-weight:800;font-size:clamp(26px,6.4vw,44px);line-height:1.08;letter-spacing:-.025em;margin:72px 0 18px;max-width:15em}
-h1 em{font-style:normal;color:var(--red)}
-.sub{max-width:34em;opacity:.8;font-size:12.5px}
-.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
-.btn{font:inherit;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:11px 16px;border-radius:99px;
-  border:1.5px solid var(--ink);color:var(--ink);background:transparent;text-decoration:none;cursor:pointer;transition:.2s}
-.btn.red{background:var(--red);border-color:var(--red);color:#fff}
-.btn:hover{transform:translateY(-1px)}
-section{margin-top:92px}
-.lab{color:var(--red);letter-spacing:.16em;text-transform:uppercase;font-size:10.5px;margin-bottom:14px}
-h2{font-weight:800;font-size:19px;letter-spacing:-.015em;margin-bottom:22px;max-width:22em}
-.row{display:grid;grid-template-columns:30px 1fr;gap:6px 12px;padding:13px 0;border-top:1px solid var(--line)}
-.row:last-child{border-bottom:1px solid var(--line)}
-.row span{color:var(--red);font-size:11px}
-.row p{opacity:.72;font-size:11.5px;grid-column:2}
-.row h3{font-size:12.5px;font-weight:800}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
-.card{position:relative;padding:16px;border:1.5px solid var(--ink);border-radius:14px;background:color-mix(in srgb,var(--paper) 78%,transparent);backdrop-filter:blur(3px)}
-.card h3{font-size:12.5px;font-weight:800;margin:8px 0 5px}
-.card p{opacity:.72;font-size:11.5px}
-.tag{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;display:inline-flex;align-items:center;gap:6px}
-.tag:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--drop)}
-.tag.todo:before{background:var(--red)}
-.ph{color:var(--red)}
-footer{margin-top:90px;padding-top:16px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:10.5px;opacity:.7}
-.w{position:relative;display:inline-block}
-.drop{position:absolute;top:92%;width:5px;height:7px;margin-left:-2.5px;border-radius:50% 50% 50% 50%/65% 65% 35% 35%;
-  background:var(--drop);opacity:0;transform-origin:top;animation:drip 5s ease-in infinite;pointer-events:none}
-.drop.r{background:var(--red)}
-@keyframes drip{0%{opacity:0;transform:translateY(-3px) scale(.3)}12%{opacity:.95;transform:none}
-  42%{opacity:.95;transform:translateY(2px) scaleY(2.1)}100%{opacity:0;transform:translateY(var(--fall,90px)) scaleY(1.3)}}
-@media (prefers-reduced-motion:reduce){.drop{display:none}html{scroll-behavior:auto}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f6f5f1">
+  <title>Youtri — AI shaped by physics</title>
+  <meta name="description" content="Youtri builds MADSCIEN X5, an experimental language model shaped by a seven-step physics-inspired pipeline.">
+  <meta property="og:title" content="Youtri — AI shaped by physics">
+  <meta property="og:description" content="Meet MADSCIEN X5, an experimental language model shaped by a seven-step physics-inspired pipeline.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%23e34832'/%3E%3Cpath d='M20 7C20 7 11 18 11 24a9 9 0 0018 0C29 18 20 7 20 7z' fill='white'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{color-scheme:light;--bg:#f6f5f1;--surface:#fff;--ink:#171916;--muted:#6d716a;--line:#e4e5df;--accent:#e34832;--accent-dark:#bd3525;--soft:#f7e8e3;--green:#417a5b;--shadow:0 18px 55px rgba(30,35,27,.08)}
+    :root[data-theme="dark"]{color-scheme:dark;--bg:#121512;--surface:#1b201b;--ink:#f4f3ed;--muted:#a6aaa1;--line:#30372f;--accent:#ff765f;--accent-dark:#ff9b88;--soft:#39231f;--green:#8bc49e;--shadow:0 18px 55px rgba(0,0,0,.24)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.65 "DM Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit}button{font:inherit}.wrap{width:min(1120px,calc(100% - 48px));margin:auto}.topbar{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(16px);border-bottom:1px solid color-mix(in srgb,var(--line) 75%,transparent)}nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font:700 19px "Space Grotesk",sans-serif;letter-spacing:-.05em}.brand-mark{width:30px;height:30px;border-radius:10px;background:var(--accent);display:grid;place-items:center;color:white}.brand-mark svg{width:17px}.navlinks{display:flex;align-items:center;gap:30px}.navlinks a{text-decoration:none;color:var(--muted);font-size:13px;font-weight:600;transition:color .2s}.navlinks a:hover,.navlinks a:focus-visible{color:var(--accent)}.nav-actions{display:flex;align-items:center;gap:12px}.theme-toggle,.menu-toggle{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:50%;width:40px;height:40px;display:grid;place-items:center;cursor:pointer}.theme-toggle svg,.menu-toggle svg{width:17px;height:17px}.menu-toggle{display:none}.button{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:12px 18px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);text-decoration:none;font-size:13px;font-weight:700;transition:transform .2s,background .2s,border-color .2s}.button:hover{transform:translateY(-2px);border-color:var(--accent)}.button.primary{background:var(--accent);border-color:var(--accent);color:white}.button.primary:hover{background:var(--accent-dark)}.button svg{width:15px;height:15px}.hero{padding:105px 0 88px;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;z-index:-1;width:550px;height:550px;right:-170px;top:-180px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--accent) 15%,transparent),transparent 68%)}.eyebrow{display:flex;align-items:center;gap:9px;color:var(--accent);font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase}.eyebrow:before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}.hero h1{max-width:820px;margin:22px 0 20px;font:600 clamp(48px,8vw,88px)/.99 "Space Grotesk",sans-serif;letter-spacing:-.075em}.hero h1 span{color:var(--accent)}.hero-copy{max-width:590px;color:var(--muted);font-size:17px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.hero-meta{margin-top:76px;padding-top:22px;border-top:1px solid var(--line);display:flex;gap:40px;flex-wrap:wrap;color:var(--muted);font-size:12px}.hero-meta strong{display:block;color:var(--ink);font:600 16px "Space Grotesk",sans-serif;margin-bottom:3px}.section{padding:86px 0;border-top:1px solid var(--line)}.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:34px}.section-head h2{max-width:600px;margin:12px 0 0;font:600 clamp(32px,5vw,50px)/1.08 "Space Grotesk",sans-serif;letter-spacing:-.06em}.section-head>p{max-width:350px;color:var(--muted);font-size:14px;margin:0}.pipeline{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.step{display:grid;grid-template-columns:43px 1fr;gap:14px;padding:22px;border:1px solid var(--line);border-radius:16px;background:var(--surface);transition:transform .2s,border-color .2s}.step:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--accent) 55%,var(--line))}.step-number{width:36px;height:36px;display:grid;place-items:center;border-radius:12px;background:var(--soft);color:var(--accent);font:700 12px "Space Grotesk",sans-serif}.step h3,.status-card h3{margin:2px 0 6px;font:600 17px "Space Grotesk",sans-serif;letter-spacing:-.03em}.step p,.status-card p{margin:0;color:var(--muted);font-size:13px;line-height:1.6}.status-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.status-card{padding:22px;border:1px solid var(--line);border-radius:16px;background:var(--surface)}.status-icon{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:var(--soft);color:var(--accent);margin-bottom:20px}.status-icon svg{width:18px;height:18px}.status-label{display:inline-flex;align-items:center;gap:7px;margin-bottom:10px;color:var(--green);font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.status-label:before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}.status-label.next{color:var(--accent)}.funding{display:grid;grid-template-columns:1fr .8fr;gap:50px;align-items:center;padding:40px;border-radius:24px;background:var(--ink);color:var(--bg);overflow:hidden;position:relative}.funding:after{content:"";position:absolute;width:420px;height:420px;right:-80px;bottom:-270px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--accent) 48%,transparent),transparent 70%)}.funding-copy,.funding-amount{position:relative;z-index:1}.funding h2{font:600 clamp(34px,5vw,54px)/1.02 "Space Grotesk",sans-serif;letter-spacing:-.06em;margin:15px 0}.funding-copy p{max-width:470px;color:color-mix(in srgb,var(--bg) 70%,transparent);font-size:14px}.funding-amount{padding:26px;border:1px solid color-mix(in srgb,var(--bg) 22%,transparent);border-radius:18px;background:color-mix(in srgb,var(--bg) 7%,transparent);backdrop-filter:blur(8px)}.funding-amount small{color:color-mix(in srgb,var(--bg) 66%,transparent);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}.funding-amount strong{display:block;margin:10px 0 5px;font:600 clamp(44px,7vw,72px)/1 "Space Grotesk",sans-serif;letter-spacing:-.07em}.funding-amount p{margin:0;color:color-mix(in srgb,var(--bg) 68%,transparent);font-size:12px}.funding .eyebrow{color:#ff9b88}.funding .button{margin-top:22px}.contact-link{color:var(--accent-dark);text-underline-offset:4px}footer{padding:28px 0 36px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:var(--muted);font-size:12px}footer a{text-decoration:none}footer a:hover{color:var(--accent)}:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 55%,transparent);outline-offset:3px}.reveal{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s ease}.reveal.visible{opacity:1;transform:none}@media(max-width:850px){.status-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.funding{grid-template-columns:1fr;gap:28px}.section-head{align-items:start;flex-direction:column}.section-head>p{max-width:560px}}@media(max-width:640px){.wrap{width:min(100% - 36px,520px)}nav{min-height:66px}.navlinks{display:none;position:absolute;top:65px;left:0;right:0;padding:16px 22px 22px;background:var(--bg);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0}.navlinks.open{display:flex}.navlinks a{padding:12px 0}.menu-toggle{display:grid}.nav-actions>.button{display:none}.hero{padding:76px 0 60px}.hero h1{font-size:clamp(46px,13vw,68px)}.hero-copy{font-size:15px}.hero-meta{margin-top:52px;gap:22px}.section{padding:65px 0}.pipeline{grid-template-columns:1fr}.status-grid{grid-template-columns:1fr}.status-card{padding:19px}.funding{padding:26px 22px}.funding-amount{padding:21px}footer{padding-bottom:26px}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+  </style>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="wc" x="-10%" y="-10%" width="120%" height="120%">
-<feTurbulence type="fractalNoise" baseFrequency=".012" numOctaves="3" seed="7" result="n"/>
-<feDisplacementMap in="SourceGraphic" in2="n" scale="46"/><feGaussianBlur stdDeviation="6"/></filter></svg>
-<div class="wash" aria-hidden="true"><i></i><i></i><i></i></div>
-
-<main>
-<nav><b>Youtri</b><a href="#ask">Funding</a></nav>
-
-<h1 data-drip>Youtri builds AI shaped like <em>physics</em>.</h1>
-<p class="sub">Youtri is the parent company of MADSCIEN, a language model whose every layer runs a 7-step pipeline: charge, conservation, induction, calculus, bonding, singularity and self-evolution. Code it writes is checked by execution, not by trust.</p>
-<div class="cta"><a class="btn red" href="#pipeline">See our product</a><a class="btn" href="mailto:you@example.com?subject=Youtri%20deck">Request the deck</a></div>
-
-<section id="pipeline">
-<div class="lab">01 · Our product · MADSCIEN X5</div>
-<h2 data-drip>Seven steps, one point.</h2>
-<div class="row"><span>01</span><h3>Field filter</h3><p>Words become charges. Coulomb flux ranks them and a Gauss gate keeps the strongest. The rest is earthed.</p></div>
-<div class="row"><span>02</span><h3>Conservation check</h3><p>An orthogonal rotation plus torque, then an angular impulse restores the moment L.</p></div>
-<div class="row"><span>03</span><h3>Logic induction</h3><p>Faraday's law along the sequence: e = −dΦ/dt turns change into new features.</p></div>
-<div class="row"><span>04</span><h3>Solve</h3><p>Every subset is a case. Bayes weights them, the King property integrates, complex phasors carry the phase.</p></div>
-<div class="row"><span>05</span><h3>Chemistry filter</h3><p>Molecular-orbital bond order and 3° &gt; 2° &gt; 1° stability remove unstable candidates.</p></div>
-<div class="row"><span>06</span><h3>Singularity core</h3><p>All survivors compress into a single vector.</p></div>
-<div class="row"><span>07</span><h3>Self-evolution</h3><p>The model updates itself on a physics loss, with bounded self-adaptation.</p></div>
-</section>
-
-<section>
-<div class="lab">02 · Status today</div>
-<h2 data-drip>What exists, stated plainly.</h2>
-<div class="grid card-grid">
-<div class="card"><span class="tag">Built · tested</span><h3>NumPy reference</h3><p>The full algorithm as a runnable model, with invariant checks.</p></div>
-<div class="card"><span class="tag">Built · tests included</span><h3>PyTorch LM</h3><p>Causal, differentiable, with a test that matches the NumPy algorithm exactly.</p></div>
-<div class="card"><span class="tag">Built · tested</span><h3>Verified code pipeline</h3><p>Execution-checked tasks, a sandboxed runner, pass@k, bracket-safe decoding.</p></div>
-<div class="card"><span class="tag todo">Next</span><h3>Training at scale</h3><p>Benchmarks and scaling results. <span class="ph">[ADD YOUR RESULTS]</span></p></div>
-</div>
-</section>
-
-<section id="ask">
-<div class="lab">03 · The ask</div>
-<h2 data-drip>Compute, evaluation, team.</h2>
-<div class="row"><span>A</span><h3>Youtri is raising <b class="ph">[AMOUNT]</b></h3><p>Stage: <span class="ph">[PRE-SEED / SEED]</span>. Runway: <span class="ph">[MONTHS]</span>.</p></div>
-<div class="row"><span>B</span><h3>Training runs</h3><p>Scale the model on verified synthetic and real data. <span class="ph">[% OF FUNDS]</span></p></div>
-<div class="row"><span>C</span><h3>Benchmarks</h3><p>Public evaluation against baselines of the same size. <span class="ph">[% OF FUNDS]</span></p></div>
-<div class="row"><span>D</span><h3>Team</h3><p>Hire research and infrastructure engineers. <span class="ph">[% OF FUNDS]</span></p></div>
-<div class="cta"><a class="btn red" href="mailto:you@example.com?subject=Youtri%20funding">Talk to us</a></div>
-</section>
-
-<footer><span>© <span id="y"></span> Youtri · MADSCIEN is a Youtri product</span><span>you@example.com</span></footer>
-</main>
-
-<script>
-document.getElementById('y').textContent=new Date().getFullYear();
-(function(){
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  var rnd=function(a,b){return a+Math.random()*(b-a)};
-  function drop(host,left){
-    var d=document.createElement('i');d.className='drop'+(Math.random()<.22?' r':'');
-    d.style.left=left;d.style.animationDelay=rnd(0,7)+'s';d.style.animationDuration=rnd(4,7.5)+'s';
-    d.style.setProperty('--fall',rnd(60,150)+'px');host.appendChild(d);
-  }
-  document.querySelectorAll('[data-drip]').forEach(function(el){
-    el.innerHTML=el.textContent.trim().split(' ').map(function(w){return '<span class="w">'+w+'</span>'}).join(' ');
-    el.querySelectorAll('.w').forEach(function(w){if(Math.random()<.55)drop(w,rnd(20,80)+'%')});
-  });
-  document.querySelectorAll('.card').forEach(function(c){drop(c,'14px');drop(c,'calc(100% - 14px)')});
-  document.querySelectorAll('.card').forEach(function(c){c.style.overflow='visible'});
-})();
-</script>
+  <header class="topbar">
+    <nav class="wrap" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Youtri home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3S6.5 10 6.5 14a5.5 5.5 0 0011 0C17.5 10 12 3 12 3z" fill="currentColor"/></svg></span>Youtri</a>
+      <div class="navlinks" id="navlinks"><a href="#product">Product</a><a href="#status">Progress</a><a href="#funding">Funding</a></div>
+      <div class="nav-actions"><button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark theme" title="Toggle color theme"><svg id="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg></button><a class="button primary" href="mailto:tanishparashar134@gmail.com?subject=Youtri%20%E2%80%94%20let%E2%80%99s%20talk">Get in touch</a><button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navlinks"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+    </nav>
+  </header>
+  <main id="home">
+    <section class="hero wrap">
+      <div class="eyebrow">A new kind of intelligence</div>
+      <h1>Building AI with a foundation in <span>physics.</span></h1>
+      <p class="hero-copy">Youtri is building MADSCIEN X5, an experimental language model shaped by a seven-step physics-inspired pipeline. We’re exploring a different way to reason, one step at a time.</p>
+      <div class="hero-actions"><a class="button primary" href="#product">Explore the approach <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a><a class="button" href="mailto:tanishparashar134@gmail.com?subject=Youtri%20deck">Request the deck</a></div>
+      <div class="hero-meta"><div><strong>MADSCIEN X5</strong>Experimental language model</div><div><strong>7 stages</strong>Physics-inspired pipeline</div><div><strong>Open ambition</strong>Built to be evaluated</div></div>
+    </section>
+    <section class="section" id="product"><div class="wrap">
+      <div class="section-head reveal"><div><div class="eyebrow">01 / The product</div><h2>Seven steps. One reasoning pipeline.</h2></div><p>Each stage is designed to transform, check, and refine representations before they converge into an output.</p></div>
+      <div class="pipeline">
+        <article class="step reveal"><span class="step-number">01</span><div><h3>Field filter</h3><p>Words become charges. Coulomb flux ranks them and a Gauss gate keeps the strongest signals.</p></div></article>
+        <article class="step reveal"><span class="step-number">02</span><div><h3>Conservation check</h3><p>An orthogonal rotation and angular impulse restore the system’s moment.</p></div></article>
+        <article class="step reveal"><span class="step-number">03</span><div><h3>Logic induction</h3><p>Faraday’s law across a sequence turns change into new features.</p></div></article>
+        <article class="step reveal"><span class="step-number">04</span><div><h3>Solve</h3><p>Candidate cases are weighted and integrated, with complex phasors carrying phase.</p></div></article>
+        <article class="step reveal"><span class="step-number">05</span><div><h3>Chemistry filter</h3><p>Molecular-orbital bond order and stability rules filter candidate representations.</p></div></article>
+        <article class="step reveal"><span class="step-number">06</span><div><h3>Singularity core</h3><p>The surviving representations compress into a single vector.</p></div></article>
+        <article class="step reveal"><span class="step-number">07</span><div><h3>Self-evolution</h3><p>A physics-inspired loss supports bounded self-adaptation during training.</p></div></article>
+      </div>
+    </div></section>
+    <section class="section" id="status"><div class="wrap">
+      <div class="section-head reveal"><div><div class="eyebrow">02 / Where we are</div><h2>Built with testing in mind.</h2></div><p>We’re developing the foundations and want progress to be legible. Training at scale and public benchmarks are next.</p></div>
+      <div class="status-grid">
+        <article class="status-card reveal"><div class="status-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-2-12-4 14"/></svg></div><span class="status-label">Built · tested</span><h3>NumPy reference</h3><p>Runnable reference implementation with invariant checks.</p></article>
+        <article class="status-card reveal"><div class="status-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M8 12h8m-4-4v8"/></svg></div><span class="status-label">Built · tests included</span><h3>PyTorch LM</h3><p>Causal and differentiable, with tests against the reference algorithm.</p></article>
+        <article class="status-card reveal"><div class="status-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 12h8m-8 4h5M7 3h7l5 5v13H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M14 3v5h5"/></svg></div><span class="status-label">Built · tested</span><h3>Verified code pipeline</h3><p>Execution-checked tasks, sandboxed runner, pass@k, and bracket-safe decoding.</p></article>
+        <article class="status-card reveal"><div class="status-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 20h18M5 17l5-6 4 3 5-8"/><path d="M15 6h4v4"/></svg></div><span class="status-label next">Up next</span><h3>Scale & evaluate</h3><p>Training runs, benchmarks, and transparent results against comparable baselines.</p></article>
+      </div>
+    </div></section>
+    <section class="section" id="funding"><div class="wrap"><div class="funding reveal">
+      <div class="funding-copy"><div class="eyebrow">03 / The ask</div><h2>Help us test a different path.</h2><p>Youtri is raising to support compute, independent evaluation, and a focused research and infrastructure team. Interested in learning more? Let’s talk.</p><a class="button primary" href="mailto:tanishparashar134@gmail.com?subject=Youtri%20funding">Talk about the raise <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div>
+      <div class="funding-amount"><small>Funding target</small><strong>$500k</strong><p>For compute, evaluation, and team.</p></div>
+    </div></div></section>
+  </main>
+  <footer class="wrap"><span>© <span id="year"></span> Youtri · MADSCIEN is a Youtri product</span><a href="mailto:tanishparashar134@gmail.com">tanishparashar134@gmail.com</a></footer>
+  <script>
+    (function(){
+      var root=document.documentElement;
+      var themeButton=document.getElementById('theme-toggle');
+      var themeIcon=document.getElementById('theme-icon');
+      var savedTheme=null;
+      try{savedTheme=localStorage.getItem('youtri-theme')}catch(e){}
+      if(savedTheme==='dark'||savedTheme==='light')root.dataset.theme=savedTheme;
+      function updateThemeControl(){var dark=root.dataset.theme==='dark';themeButton.setAttribute('aria-label',dark?'Switch to light theme':'Switch to dark theme');themeIcon.innerHTML=dark?'<path d="M20.5 15.2A8.5 8.5 0 0 1 8.8 3.5 8.5 8.5 0 1 0 20.5 15.2Z"/>':'<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/>'}
+      updateThemeControl();
+      themeButton.addEventListener('click',function(){root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';try{localStorage.setItem('youtri-theme',root.dataset.theme)}catch(e){}updateThemeControl()});
+      var menuButton=document.getElementById('menu-toggle');var links=document.getElementById('navlinks');
+      menuButton.addEventListener('click',function(){var open=links.classList.toggle('open');menuButton.setAttribute('aria-expanded',String(open));menuButton.setAttribute('aria-label',open?'Close navigation menu':'Open navigation menu')});
+      links.querySelectorAll('a').forEach(function(link){link.addEventListener('click',function(){links.classList.remove('open');menuButton.setAttribute('aria-expanded','false');menuButton.setAttribute('aria-label','Open navigation menu')})});
+      document.getElementById('year').textContent=new Date().getFullYear();
+      var items=document.querySelectorAll('.reveal');
+      if('IntersectionObserver' in window&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}})},{threshold:.12});items.forEach(function(item){observer.observe(item)})}else{items.forEach(function(item){item.classList.add('visible')})}
+    })();
+  </script>
 </body>
 </html>
