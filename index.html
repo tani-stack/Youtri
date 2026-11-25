@@ -3,234 +3,50 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f6f5f1">
 <title>Youtri · Building AI with a foundation in physics</title>
 <meta name="description" content="Youtri is a deep-tech AI research lab building MADSCIEN X5, an experimental language model with a seven-stage physics-inspired reasoning pipeline.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-<script>try{var t=localStorage.getItem("youtri-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<script>try{const theme=localStorage.getItem('youtri-theme');if(theme)document.documentElement.dataset.theme=theme}catch{}</script>
 <style>
-:root{--bg:#f6f5f1;--ink:#121512;--mute:#5b605b;--line:rgba(18,21,18,.14);--card:#fbfaf7;--acc:#e34832;--sage:#417a5b;--glass:rgba(246,245,241,.82);--ask:#121512;--askink:#f6f5f1;--askmute:#a9aea9;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121512;--ink:#f6f5f1;--mute:#a4a9a4;--line:rgba(246,245,241,.16);--card:#191d19;--acc:#ff765f;--sage:#8bc49e;--glass:rgba(18,21,18,.82);--ask:#1d221d;--askink:#f6f5f1;--askmute:#a4a9a4;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#121512;--ink:#f6f5f1;--mute:#a4a9a4;--line:rgba(246,245,241,.16);--card:#191d19;--acc:#ff765f;--sage:#8bc49e;--glass:rgba(18,21,18,.82);--ask:#1d221d;--askink:#f6f5f1;--askmute:#a4a9a4;color-scheme:dark}
-*,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px)}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.65 "DM Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);z-index:10}
-h1,h2,h3{font-family:"Space Grotesk",sans-serif;letter-spacing:-.035em;line-height:1.05;margin:0}
-a{color:inherit}
-.mono{font-family:"JetBrains Mono",monospace}
-.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
-:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:11;background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.bar{display:flex;align-items:center;gap:16px;height:64px}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 1.25rem "Space Grotesk",sans-serif;letter-spacing:-.03em;margin-right:auto}
-.brand svg{width:26px;height:26px}
-nav{display:flex;gap:22px}
-nav a{text-decoration:none;font-size:.92rem;color:var(--mute);transition:color .2s}
-nav a:hover{color:var(--ink)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 20px;border:1px solid var(--ink);border-radius:999px;background:transparent;color:var(--ink);font:500 .92rem "DM Sans",sans-serif;text-decoration:none;cursor:pointer;transition:background .2s,color .2s,transform .15s}
-.btn:hover{transform:translateY(-1px)}
-.btn.p{background:var(--acc);border-color:var(--acc);color:#fff}
-.btn.p:hover{filter:brightness(1.06)}
-.btn.sm{padding:8px 16px}
-#theme{width:38px;height:38px;padding:0;border-radius:50%}
-#theme svg{width:18px;height:18px}
-.hero{position:relative;overflow:hidden;padding:88px 0 0;border-bottom:1px solid var(--line)}
-.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:84px 84px;opacity:.55;-webkit-mask-image:linear-gradient(#000 30%,transparent);mask-image:linear-gradient(#000 30%,transparent)}
-.field{position:absolute;right:-120px;top:20px;width:min(820px,110%);opacity:.5;pointer-events:none}
-.field path{fill:none;stroke:var(--acc);stroke-width:1.2;stroke-dasharray:6 10;animation:drift 24s linear infinite}
-.field path:nth-child(even){stroke:var(--sage);animation-direction:reverse}
-@keyframes drift{to{stroke-dashoffset:-320}}
-.hero .wrap{position:relative}
-.eyebrow{font:500 .78rem "JetBrains Mono",monospace;letter-spacing:.14em;color:var(--acc);margin:0 0 22px}
-h1{font-size:clamp(2.7rem,8.4vw,6rem);font-weight:700;max-width:12ch}
-.sub{max-width:54ch;font-size:1.15rem;color:var(--mute);margin:26px 0 32px}
-.cta{display:flex;flex-wrap:wrap;gap:12px}
-.metrics{display:grid;grid-template-columns:repeat(4,1fr);margin-top:72px;border-top:1px solid var(--line);background:var(--bg)}
-.metrics div{padding:22px 20px 24px 0;border-right:1px solid var(--line);padding-left:20px}
-.metrics div:first-child{padding-left:0}
-.metrics div:last-child{border-right:0}
-.metrics b{display:block;font:600 clamp(1.3rem,3.2vw,2rem) "Space Grotesk",sans-serif;letter-spacing:-.03em}
-.metrics span{font-size:.82rem;color:var(--mute)}
-section{padding:88px 0;border-bottom:1px solid var(--line)}
-.sh{display:grid;gap:14px;margin-bottom:40px}
-.num{font:500 .8rem "JetBrains Mono",monospace;color:var(--sage)}
-h2{font-size:clamp(2rem,5vw,3.2rem);font-weight:600;max-width:20ch}
-.lead{max-width:60ch;color:var(--mute);margin:0}
-.diagram{border:1px solid var(--line);background:var(--card);border-radius:8px;padding:18px 14px 14px;overflow-x:auto}
-.diagram svg{display:block;min-width:600px;width:100%;height:auto}
-.rail{stroke:var(--line);stroke-width:2}
-.node{cursor:pointer;outline:none}
-.node circle{fill:var(--bg);stroke:var(--ink);stroke-width:1.5;transition:fill .25s,stroke .25s}
-.node text{font:500 12px "JetBrains Mono",monospace;fill:var(--ink);text-anchor:middle}
-.node .lb{font:400 11px "DM Sans",sans-serif;fill:var(--mute)}
-.node.on circle{fill:var(--acc);stroke:var(--acc)}
-.node.on text:not(.lb){fill:#fff}
-.node.on .lb{fill:var(--ink)}
-.node:focus-visible circle{stroke:var(--acc);stroke-width:3}
-#pulse{fill:var(--sage);transition:transform .7s cubic-bezier(.5,0,.2,1)}
-.intuit{margin:14px 6px 4px;min-height:3.4em;font-size:.95rem}
-.intuit code{display:block;font:500 .95rem "JetBrains Mono",monospace;color:var(--acc);margin-bottom:4px}
-.grid{display:grid;gap:16px}
-.g3{grid-template-columns:repeat(3,1fr)}
-.g2{grid-template-columns:repeat(2,1fr)}
-.g4{grid-template-columns:repeat(4,1fr)}
-.card{border:1px solid var(--line);background:var(--card);border-radius:8px;padding:22px;transition:border-color .25s}
-.card h3{font-size:1.15rem;margin:8px 0 8px;letter-spacing:-.02em}
-.card p{margin:0;color:var(--mute);font-size:.94rem}
-.card .k{font:500 .75rem "JetBrains Mono",monospace;color:var(--sage)}
-#cards{margin-top:16px;grid-template-columns:repeat(4,1fr)}
-#cards .card.on{border-color:var(--acc)}
-#cards .card.on .k{color:var(--acc)}
-.demo{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
-.tabs{display:flex;overflow-x:auto;border-bottom:1px solid var(--line)}
-.tabs button{flex:1 0 auto;padding:14px 18px;background:none;border:0;border-right:1px solid var(--line);color:var(--mute);font:500 .9rem "DM Sans",sans-serif;cursor:pointer;white-space:nowrap}
-.tabs button[aria-selected="true"]{color:var(--ink);box-shadow:inset 0 -2px var(--acc)}
-.term{padding:22px;min-height:290px;background:var(--ask);color:var(--askink)}
-.term .hd{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px;color:var(--askmute);font-size:.8rem}
-.ln{display:grid;grid-template-columns:90px 1fr;gap:12px;font:400 .9rem/1.6 "JetBrains Mono",monospace;padding:3px 0;animation:in .35s ease}
-.ln i{font-style:normal;color:#8bc49e}
-.ln.last b{color:#ff765f;font-weight:500}
-@keyframes in{from{opacity:0;transform:translateY(4px)}}
-.badge{display:inline-flex;gap:8px;align-items:center;margin-top:16px;padding:7px 14px;border:1px solid #8bc49e;border-radius:999px;color:#8bc49e;font:500 .82rem "JetBrains Mono",monospace;animation:in .4s ease}
-.foot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 22px;border-top:1px solid var(--line);font-size:.88rem;color:var(--mute)}
-.big{font:600 clamp(2.2rem,5vw,3.2rem) "Space Grotesk",sans-serif;letter-spacing:-.04em;color:var(--acc);line-height:1}
-.mi .card p{margin-top:8px}
-.team .av{display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--ink);color:var(--bg);font:600 1.15rem "Space Grotesk",sans-serif;margin-bottom:18px}
-.team h3{font-size:1.6rem}
-.team .role{color:var(--sage);font:500 .84rem "JetBrains Mono",monospace;margin:6px 0 12px!important}
-details{border-top:1px solid var(--line)}
-details:last-child{border-bottom:1px solid var(--line)}
-summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;padding:20px 0;font:500 1.15rem "Space Grotesk",sans-serif;letter-spacing:-.02em}
-summary::-webkit-details-marker{display:none}
-summary::after{content:"+";font:400 1.5rem/1 "JetBrains Mono",monospace;color:var(--acc);transition:transform .25s}
-details[open] summary::after{transform:rotate(45deg)}
-details p{margin:0 0 22px;max-width:68ch;color:var(--mute)}
-.faq{max-width:820px}
-.ask{background:var(--ask);color:var(--askink);border-radius:10px;padding:clamp(28px,5vw,56px);border:1px solid var(--line)}
-.ask .num{color:#8bc49e}
-.amt{font:700 clamp(4rem,14vw,8.5rem) "Space Grotesk",sans-serif;letter-spacing:-.05em;line-height:.95;color:#ff765f;margin:10px 0}
-.ask p{color:var(--askmute);max-width:56ch}
-.alloc{display:flex;height:16px;border-radius:999px;overflow:hidden;margin:36px 0 18px;gap:3px}
-.alloc span{display:block}
-.leg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:0 0 34px;padding:0;list-style:none;font-size:.92rem}
-.leg b{display:block;font:600 1.5rem "Space Grotesk",sans-serif;color:var(--askink)}
-.leg li{border-top:1px solid rgba(246,245,241,.2);padding-top:12px;color:var(--askmute)}
-.ask .btn{border-color:var(--askink);color:var(--askink)}
-.ask .btn.p{border-color:#ff765f;background:#ff765f;color:#121512}
-footer{padding:36px 0 44px;font-size:.88rem;color:var(--mute)}
-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
-#toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);opacity:0;background:var(--ink);color:var(--bg);padding:10px 20px;border-radius:999px;font:500 .88rem "DM Sans",sans-serif;transition:.3s;z-index:20;pointer-events:none}
-#toast.on{opacity:1;transform:translate(-50%,0)}
-@media(max-width:900px){nav{display:none}.g3,.g2{grid-template-columns:1fr}#cards,.g4{grid-template-columns:repeat(2,1fr)}.metrics{grid-template-columns:repeat(2,1fr)}.metrics div:nth-child(2){border-right:0}.metrics div:nth-child(n+3){border-top:1px solid var(--line)}.metrics div:nth-child(3){padding-left:0}.leg{grid-template-columns:1fr}section{padding:64px 0}}
-@media(max-width:520px){#cards,.g4{grid-template-columns:1fr}.ln{grid-template-columns:1fr;gap:0}.btn.sm.hide{display:none}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+:root{color-scheme:light;--bg:#f6f5f1;--ink:#121512;--mute:#5b605b;--line:rgba(18,21,18,.14);--card:#fbfaf7;--acc:#e34832;--sage:#417a5b;--glass:rgba(246,245,241,.88);--terminal:#121512;--terminal-ink:#f6f5f1;--terminal-muted:#a9aea9}
+:root[data-theme=dark]{color-scheme:dark;--bg:#121512;--ink:#f6f5f1;--mute:#a4a9a4;--line:rgba(246,245,241,.16);--card:#191d19;--acc:#ff765f;--sage:#8bc49e;--glass:rgba(18,21,18,.9);--terminal:#1d221d;--terminal-ink:#f6f5f1;--terminal-muted:#a4a9a4}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){color-scheme:dark;--bg:#121512;--ink:#f6f5f1;--mute:#a4a9a4;--line:rgba(246,245,241,.16);--card:#191d19;--acc:#ff765f;--sage:#8bc49e;--glass:rgba(18,21,18,.9);--terminal:#1d221d;--terminal-ink:#f6f5f1;--terminal-muted:#a4a9a4}}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:80px}body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.65 'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit}button{font:inherit}button:focus-visible,a:focus-visible,select:focus-visible{outline:3px solid var(--acc);outline-offset:3px}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}h1,h2,h3{font-family:'Space Grotesk',sans-serif;letter-spacing:-.035em;line-height:1.08;margin:0}header{position:sticky;top:0;z-index:5;background:var(--glass);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}.bar{height:66px;display:flex;align-items:center;gap:22px}.brand{font:700 1.25rem 'Space Grotesk',sans-serif;text-decoration:none;margin-right:auto}.brand span{color:var(--acc)}nav{display:flex;gap:20px}nav a{text-decoration:none;color:var(--mute);font-size:.92rem}nav a:hover{color:var(--ink)}.button{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 18px;border:1px solid var(--ink);border-radius:999px;background:transparent;color:var(--ink);text-decoration:none;font-weight:600;cursor:pointer;transition:transform .15s,background .2s}.button:hover{transform:translateY(-1px)}.button.primary{background:var(--acc);border-color:var(--acc);color:white}.button.small{padding:7px 14px;font-size:.9rem}.hero{padding:90px 0 0;border-bottom:1px solid var(--line);background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:84px 84px;background-position:center top}.eyebrow,.label{font:500 .78rem 'JetBrains Mono',monospace;letter-spacing:.1em;color:var(--acc)}h1{font-size:clamp(2.8rem,8vw,5.8rem);max-width:12ch}.sub{max-width:56ch;font-size:1.15rem;color:var(--mute);margin:24px 0 30px}.actions{display:flex;flex-wrap:wrap;gap:12px}.metrics{display:grid;grid-template-columns:repeat(4,1fr);margin-top:70px;border-top:1px solid var(--line)}.metric{padding:20px;border-right:1px solid var(--line)}.metric:first-child{padding-left:0}.metric:last-child{border:0}.metric strong{display:block;font:600 clamp(1.2rem,3vw,1.9rem) 'Space Grotesk',sans-serif}.metric span{color:var(--mute);font-size:.84rem}section{padding:78px 0;border-bottom:1px solid var(--line)}.section-head{display:grid;gap:12px;margin-bottom:32px}.section-head h2{font-size:clamp(2rem,5vw,3.2rem);max-width:22ch}.section-head p{max-width:62ch;color:var(--mute);margin:0}.demo{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}.tabs{display:flex;overflow:auto;border-bottom:1px solid var(--line)}.tabs button{flex:1 0 auto;padding:14px 18px;background:none;border:0;border-bottom:2px solid transparent;color:var(--mute);cursor:pointer;white-space:nowrap}.tabs button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--acc)}.trace-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--line)}.trace-toolbar .spacer{flex:1}.speed-control{display:flex;align-items:center;gap:8px;color:var(--mute);font-size:.9rem}.speed-control select{padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}.trace-status{padding:10px 20px;color:var(--terminal-muted);font:400 .82rem 'JetBrains Mono',monospace;border-bottom:1px solid rgba(255,255,255,.1)}.trace-status .dot{display:inline-block;width:8px;height:8px;margin-right:8px;border-radius:50%;background:var(--sage)}.terminal{min-height:290px;padding:20px;background:var(--terminal);color:var(--terminal-ink)}.problem{margin:0 0 18px;color:var(--terminal-muted);font:400 .88rem/1.6 'JetBrains Mono',monospace}.step-list{display:grid;gap:10px}.trace-step{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start;padding:9px 10px;border-left:2px solid transparent;border-radius:4px;color:var(--terminal-muted);opacity:.62;transition:opacity .2s,background .2s,border-color .2s}.trace-step.visible{opacity:1;color:var(--terminal-ink)}.trace-step.current{border-left-color:#8bc49e;background:rgba(139,196,158,.09)}.step-index{font:500 .78rem 'JetBrains Mono',monospace;color:#8bc49e}.step-text{font:400 .9rem/1.65 'JetBrains Mono',monospace}.trace-step.answer .step-text{color:#ff907e;font-weight:600}.trace-foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:14px 18px;border-top:1px solid var(--line);color:var(--mute);font-size:.88rem}.progress{height:3px;background:var(--line)}.progress span{display:block;height:100%;width:0;background:var(--acc);transition:width .2s}.note{margin:14px 0 0;color:var(--mute);font-size:.84rem}.grid{display:grid;gap:16px}.three{grid-template-columns:repeat(3,1fr)}.two{grid-template-columns:repeat(2,1fr)}.card{padding:22px;border:1px solid var(--line);border-radius:10px;background:var(--card)}.card h3{margin:8px 0;font-size:1.15rem}.card p{margin:0;color:var(--mute);font-size:.94rem}.card .label{color:var(--sage)}.faq{max-width:820px}.faq details{border-top:1px solid var(--line)}.faq details:last-child{border-bottom:1px solid var(--line)}.faq summary{padding:18px 0;cursor:pointer;font:500 1.1rem 'Space Grotesk',sans-serif}.faq details p{max-width:68ch;color:var(--mute)}footer{padding:30px 0;color:var(--mute);font-size:.9rem}footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(max-width:850px){nav{display:none}.three{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,1fr)}.metric:nth-child(2){border-right:0}.metric:nth-child(n+3){border-top:1px solid var(--line)}.metric:nth-child(3){padding-left:0}}@media(max-width:520px){.hero{padding-top:62px}section{padding:58px 0}.two{grid-template-columns:1fr}.trace-toolbar .spacer{display:none}.trace-toolbar{gap:8px}.speed-control{margin-left:auto}.button.small{padding:7px 11px}.terminal{padding:14px}.trace-step{grid-template-columns:26px 1fr;padding:8px 4px}.step-text{font-size:.82rem}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
-<header>
- <div class="wrap bar">
-  <a class="brand" href="#home" aria-label="Youtri home">
-   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5C12 2.5 5 10.2 5 15a7 7 0 0 0 14 0c0-4.800-7-12.500-7-12.500Z" fill="var(--acc)"/><path d="M12 9v10M12 14l-3.500-3M12 16.500l3.500-3" stroke="var(--bg)" stroke-width="1.4" stroke-linecap="round" fill="none"/></svg>Youtri
-  </a>
-  <nav aria-label="Primary"><a href="#product">Product</a><a href="#demo">Demo</a><a href="#status">Progress</a><a href="#team">Team</a><a href="#faq">FAQ</a><a href="#funding">Funding</a></nav>
-  <button class="btn" id="theme" aria-label="Switch colour theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.500"/><path d="M12 2v2.500M12 19.500V22M2 12h2.500M19.500 12H22M4.900 4.900l1.800 1.800M17.300 17.300l1.800 1.800M4.900 19.100l1.800-1.800M17.300 6.700l1.800-1.800"/></svg></button>
-  <a class="btn p sm" href="mailto:tanishparashar134@gmail.com">Get in touch</a>
- </div>
-</header>
-
+<header><div class="wrap bar"><a class="brand" href="#home" aria-label="Youtri home">Youtri<span>.</span></a><nav aria-label="Primary navigation"><a href="#product">Product</a><a href="#demo">Live trace</a><a href="#status">Progress</a><a href="#faq">FAQ</a></nav><button class="button small" id="theme" type="button" aria-label="Switch colour theme">◐ Theme</button><a class="button primary small" href="mailto:tanishparashar134@gmail.com">Get in touch</a></div></header>
 <main>
-<div class="hero" id="home">
- <svg class="field" viewBox="0 0 800 520" aria-hidden="true"><path d="M40 260C200 60 340 60 400 260S600 460 760 260"/><path d="M40 300C200 120 340 120 400 300S600 460 760 300"/><path d="M40 220C200 20 340 20 400 220S600 420 760 220"/><path d="M40 340C220 200 340 200 400 340S580 480 760 340"/><path d="M40 180C200 -20 340 -20 400 180S600 380 760 180"/></svg>
- <div class="wrap">
-  <p class="eyebrow">A NEW KIND OF INTELLIGENCE</p>
-  <h1>Building AI with a foundation in physics.</h1>
-  <p class="sub">Youtri is a deep-tech research lab. Our experimental language model, MADSCIEN X5, reasons through conservation laws and worked steps instead of recalling templates.</p>
-  <div class="cta"><a class="btn p" href="#demo">Watch a reasoning trace</a><a class="btn" href="#funding">See the raise</a></div>
-  <div class="metrics">
-   <div><b>MADSCIEN X5</b><span>Experimental language model</span></div>
-   <div><b>7 Stages</b><span>Physics reasoning pipeline</span></div>
-   <div><b>92.7%</b><span>Accuracy on unseen problems</span></div>
-   <div><b>$500k</b><span>Pre-seed target</span></div>
-  </div>
- </div>
-</div>
-
-<section id="product"><div class="wrap">
- <div class="sh"><span class="num">01 / The Product</span><h2>Seven stages between a question and an answer.</h2><p class="lead">Every token passes through filters inspired by physical law. Select a stage to see the intuition behind it.</p></div>
- <div class="diagram">
-  <svg id="flow" viewBox="0 0 700 100" role="group" aria-label="Seven-stage signal flow">
-   <line class="rail" x1="50" y1="36" x2="650" y2="36"/>
-   <circle id="pulse" cx="0" cy="36" r="5"/>
-  </svg>
-  <div class="intuit" id="intuit" aria-live="polite"></div>
- </div>
- <div class="grid" id="cards"></div>
-</div></section>
-
-<section id="demo"><div class="wrap">
- <div class="sh"><span class="num">02 / Live Reasoning Trace</span><h2>Watch the model show its work.</h2><p class="lead">Pick a problem and replay the trace. Each line is a worked step, not a recalled answer.</p></div>
- <div class="demo">
-  <div class="tabs" role="tablist" aria-label="Problems">
-   <button role="tab" data-k="div" aria-selected="true">Worked Division</button>
-   <button role="tab" data-k="chem" aria-selected="false">Chemistry Bond Order</button>
-   <button role="tab" data-k="phy" aria-selected="false">Coulomb Flux</button>
-  </div>
-  <div class="term">
-   <div class="hd mono"><span id="ttl"></span><span>madscien-x5 / trace</span></div>
-   <div id="out" aria-live="polite"></div>
-  </div>
-  <div class="foot"><span>Traces are shown as the model produces them, step by step.</span><button class="btn sm" id="replay">Replay trace</button></div>
- </div>
-</div></section>
-
-<section id="status"><div class="wrap">
- <div class="sh"><span class="num">03 / Where We Are</span><h2>Working code, measured results.</h2><p class="lead">A tested stack and real training milestones, all trained from scratch on one consumer GPU.</p></div>
- <div class="grid g3">
-  <div class="card"><span class="k">Reference</span><h3>NumPy reference</h3><p>A readable implementation of the full pipeline that serves as the ground truth for every other build.</p></div>
-  <div class="card"><span class="k">Model</span><h3>PyTorch causal LM</h3><p>The trainable X5 language model, with stabilised gradients and zero skipped updates.</p></div>
-  <div class="card"><span class="k">Execution</span><h3>Verified code pipeline</h3><p>Generated code runs in a sandbox and is checked before an answer is accepted. 72 tests pass.</p></div>
- </div>
- <div class="grid g4 mi" style="margin-top:16px">
-  <div class="card"><div class="big">92.7%</div><h3>Unseen reasoning</h3><p>77 of 83 held-out math and physics problems, up from 0 of 80 when the model memorised templates. Aligned documents and worked steps closed the gap.</p></div>
-  <div class="card"><div class="big">10/10</div><h3>Domain mastery</h3><p>Every molecular bond problem solved, with X5 training stable and no skipped updates.</p></div>
-  <div class="card"><div class="big">8GB</div><h3>GPU efficiency</h3><p>Trained from scratch on a single RTX 4070 at 1024 context in 6.5GB of VRAM.</p></div>
-  <div class="card"><div class="big">2.07→1.41</div><h3>Length generalisation</h3><p>Abacus-style digit-position embeddings cut early validation loss. Work in progress.</p></div>
- </div>
-</div></section>
-
-<section id="team"><div class="wrap">
- <div class="sh"><span class="num">04 / Founders</span><h2>Two builders, one pipeline.</h2></div>
- <div class="grid g2 team">
-  <div class="card"><div class="av" aria-hidden="true">TP</div><h3>Tanish Parashar</h3><p class="role">Co-founder · Product, Strategy &amp; Raise</p><p>Shapes the product direction, partnerships and the pre-seed raise.</p></div>
-  <div class="card"><div class="av" aria-hidden="true">M</div><h3>Muaz</h3><p class="role">Co-founder · Core Architecture &amp; ML Engineering</p><p>Designs the X5 architecture and leads training, kernels and evaluation.</p></div>
- </div>
-</div></section>
-
-<section id="faq"><div class="wrap">
- <div class="sh"><span class="num">05 / FAQs</span><h2>Questions we hear most.</h2></div>
- <div class="faq">
-  <details><summary>What is Youtri’s mission?</summary><p>To build AI whose reasoning rests on the structure of the physical world, so its answers can be checked rather than trusted.</p></details>
-  <details><summary>Who are the founders?</summary><p>Tanish Parashar leads product, strategy and partnerships. Muaz leads core architecture and ML engineering.</p></details>
-  <details><summary>What are the seven stages?</summary><p>Field filter, conservation check, logic induction, solve, chemistry filter, singularity core and self-evolution. Each stage narrows or verifies the signal before the next one sees it.</p></details>
-  <details><summary>How is this different from a Transformer?</summary><p>X5 is still a causal language model, but its outputs pass through physics-inspired checks, and it learns from worked steps. That pushes it toward computing an answer instead of recalling a pattern.</p></details>
-  <details><summary>What has been validated so far?</summary><p>92.7% (77 of 83) on unseen held-out math and physics problems, 10 of 10 on molecular bond problems, and 72 passing tests. These are our own evaluations, and we plan to publish open benchmarks.</p></details>
-  <details><summary>What will the $500k fund?</summary><p>60% goes to H100 GPU compute for 1B–3B parameter scale, 25% to core ML research and infrastructure, and 15% to open benchmarks.</p></details>
- </div>
-</div></section>
-
-<section id="funding"><div class="wrap">
- <div class="ask">
-  <span class="num">06 / The Ask</span>
-  <div class="amt">$500k</div>
-  <p>Pre-seed to take MADSCIEN X5 from a single consumer GPU to 1B–3B parameter scale, and to open the benchmarks to outside scrutiny.</p>
-  <div class="alloc" role="img" aria-label="Use of funds: 60% GPU compute, 25% research and infrastructure, 15% open benchmarks"><span style="width:60%;background:#ff765f"></span><span style="width:25%;background:#8bc49e"></span><span style="width:15%;background:#f6f5f1"></span></div>
-  <ul class="leg"><li><b>60%</b>H100 GPU compute</li><li><b>25%</b>Research &amp; infrastructure</li><li><b>15%</b>Open benchmarks</li></ul>
-  <div class="cta"><a class="btn p" href="mailto:tanishparashar134@gmail.com">Talk to us</a><button class="btn" id="copy">Copy email</button></div>
- </div>
-</div></section>
-</main>
-
-<footer><div class="wrap"><span>© 2026 Youtri. All rights reserved.</span><span><a href="mailto:tanishparashar134@gmail.com">tanishparashar134@gmail.com</a></span><a href="#home">Back to top</a></div></footer>
-<div 
+<div class="hero" id="home"><div class="wrap"><p class="eyebrow">A NEW KIND OF INTELLIGENCE</p><h1>Building AI with a foundation in physics.</h1><p class="sub">Youtri is a deep-tech research lab. MADSCIEN X5 explores a physics-inspired reasoning pipeline that makes worked steps easier to inspect.</p><div class="actions"><a class="button primary" href="#demo">Explore the reasoning trace</a><a class="button" href="#product">How it works</a></div><div class="metrics"><div class="metric"><strong>MADSCIEN X5</strong><span>Experimental language model</span></div><div class="metric"><strong>7 stages</strong><span>Physics-inspired pipeline</span></div><div class="metric"><strong>92.7%</strong><span>Reported held-out accuracy</span></div><div class="metric"><strong>$500k</strong><span>Pre-seed target</span></div></div></div></div>
+<section id="product"><div class="wrap"><div class="section-head"><span class="label">01 / THE PRODUCT</span><h2>Seven stages between a question and an answer.</h2><p>Explore the stages in the reasoning pipeline. The interactive trace below is a deterministic educational walkthrough—not a connection to a running model or a live inference API.</p></div><div class="grid three"><article class="card"><span class="label">01—02</span><h3>Field &amp; conservation</h3><p>Frame the input and check relevant quantities and constraints.</p></article><article class="card"><span class="label">03—04</span><h3>Induce &amp; solve</h3><p>Choose a method, work through the calculation, and keep intermediate steps visible.</p></article><article class="card"><span class="label">05—07</span><h3>Filter, verify, refine</h3><p>Apply domain checks, review the result, and prepare a clearer final answer.</p></article></div></div></section>
+<section id="demo"><div class="wrap"><div class="section-head"><span class="label">02 / INTERACTIVE REASONING TRACE</span><h2>Step through a worked solution.</h2><p>Select an example, then play, pause, step forward, or replay it. Progress and the active step stay in sync.</p></div><div class="demo"><div class="tabs" role="tablist" aria-label="Choose an example"><button id="tab-div" type="button" role="tab" data-key="div" aria-selected="true" aria-controls="trace-panel">Worked division</button><button id="tab-chem" type="button" role="tab" data-key="chem" aria-selected="false" aria-controls="trace-panel" tabindex="-1">Chemistry bond order</button><button id="tab-phy" type="button" role="tab" data-key="phy" aria-selected="false" aria-controls="trace-panel" tabindex="-1">Coulomb flux</button></div><div class="trace-toolbar"><button class="button primary small" id="play" type="button" aria-label="Play trace">▶ Play</button><button class="button small" id="step" type="button">Next step</button><button class="button small" id="reset" type="button">↺ Restart</button><span class="spacer"></span><label class="speed-control" for="speed">Speed<select id="speed"><option value="1400">Slow</option><option value="850" selected>Normal</option><option value="450">Fast</option></select></label></div><div id="trace-panel" role="tabpanel" aria-labelledby="tab-div"><div class="trace-status" id="trace-status" role="status" aria-live="polite"><span class="dot" aria-hidden="true"></span><span id="status-text">Ready · 0 of 5 steps</span></div><div class="progress" role="progressbar" aria-label="Trace progress" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0"><span id="progress-fill"></span></div><div class="terminal"><p class="problem" id="problem"></p><div class="step-list" id="steps" aria-live="polite"></div></div></div><div class="trace-foot"><span>Illustrative, prewritten worked examples · no model API is connected.</span><span id="step-count">0 / 5</span></div></div><p class="note">This demo animates example solutions in your browser. It does not claim to show live output from MADSCIEN X5.</p></div></section>
+<section id="status"><div class="wrap"><div class="section-head"><span class="label">03 / WHERE WE ARE</span><h2>Research, implementation, and evaluation.</h2><p>Project-reported milestones; results are presented as the team's own evaluations.</p></div><div class="grid three"><article class="card"><span class="label">REFERENCE</span><h3>NumPy reference</h3><p>A readable implementation intended to serve as a reference for the pipeline.</p></article><article class="card"><span class="label">MODEL</span><h3>PyTorch causal LM</h3><p>A trainable language-model implementation with a focus on stable training.</p></article><article class="card"><span class="label">EVALUATION</span><h3>Held-out problem set</h3><p>The team reports 77 of 83 math and physics problems and 10 of 10 molecular bond problems solved in its evaluations.</p></article></div></div></section>
+<section id="faq"><div class="wrap"><div class="section-head"><span class="label">04 / FAQ</span><h2>Questions we hear most.</h2></div><div class="faq"><details><summary>Is this trace connected to a live model?</summary><p>No. The interactive examples are prewritten browser-side walkthroughs. A live model trace needs a model inference endpoint; this static site currently has no backend or model API connected.</p></details><details><summary>What are the seven stages?</summary><p>Field filter, conservation check, logic induction, solve, chemistry filter, singularity core, and self-evolution. These are the project's described physics-inspired stages.</p></details><details><summary>What has been validated so far?</summary><p>The team reports 92.7% (77 of 83) on its held-out math and physics set and 10 of 10 molecular bond problems. These are project-reported evaluations, not independently verified benchmarks.</p></details></div></div></section>
+<section id="contact"><div class="wrap"><div class="section-head"><span class="label">05 / GET IN TOUCH</span><h2>Building something worth checking.</h2><p>Talk to the Youtri team about the research, evaluation, or pre-seed raise.</p></div><a class="button primary" href="mailto:tanishparashar134@gmail.com">Email Youtri</a></div></section>
+</main><footer><div class="wrap"><span>© 2026 Youtri. All rights reserved.</span><a href="mailto:tanishparashar134@gmail.com">tanishparashar134@gmail.com</a><a href="#home">Back to top ↑</a></div></footer>
+<script>
+'use strict';
+const examples={
+ div:{title:'Worked division',problem:'Problem: Divide 847 by 7.',steps:['Break the dividend into place values: 847 = 700 + 140 + 7.','Divide each part by 7: 700 ÷ 7 = 100.','Continue: 140 ÷ 7 = 20.','Finish: 7 ÷ 7 = 1; add the partial quotients.','Check: 100 + 20 + 1 = 121, and 121 × 7 = 847. Answer: 121.']},
+ chem:{title:'Chemistry bond order',problem:'Problem: Find the bond order of O₂ using molecular orbital electron counts.',steps:['Count valence electrons: each oxygen contributes 6, for 12 total.','Fill bonding orbitals: σ2s², σ2p², and π2p⁴ give 8 bonding electrons.','Fill antibonding orbitals: σ*2s² and π*2p² give 4 antibonding electrons.','Apply bond order = (bonding − antibonding) ÷ 2.','(8 − 4) ÷ 2 = 2. Answer: O₂ has bond order 2.']},
+ phy:{title:'Coulomb flux',problem:'Problem: Find electric flux through a closed surface enclosing charge q = 2 μC in vacuum.',steps:['Identify the enclosed charge: q = 2 × 10⁻⁶ C.','Use Gauss’s law for a closed surface: ΦE = q_enclosed / ε₀.','Use ε₀ ≈ 8.854 × 10⁻¹² C²/(N·m²).','Substitute: ΦE = (2 × 10⁻⁶) / (8.854 × 10⁻¹²).','ΦE ≈ 2.26 × 10⁵ N·m²/C, outward for positive enclosed charge.']}
+};
+const tabs=[...document.querySelectorAll('[role=tab]')], problem=document.getElementById('problem'), stepsNode=document.getElementById('steps'), playButton=document.getElementById('play'), nextButton=document.getElementById('step'), resetButton=document.getElementById('reset'), speedSelect=document.getElementById('speed'), statusText=document.getElementById('status-text'), progress=document.querySelector('[role=progressbar]'), progressFill=document.getElementById('progress-fill'), stepCount=document.getElementById('step-count'), panel=document.getElementById('trace-panel');
+let selected='div',shown=0,timer=null;
+function stop(){if(timer!==null){clearTimeout(timer);timer=null}playButton.textContent='▶ Play';playButton.setAttribute('aria-label','Play trace')}
+function render(){const data=examples[selected];problem.textContent=data.problem;stepsNode.replaceChildren(...data.steps.map((text,index)=>{const row=document.createElement('div');row.className='trace-step'+(index<shown?' visible':'')+(index===shown-1&&shown>0?' current':'')+(index===data.steps.length-1?' answer':'');row.setAttribute('aria-label',`Step ${index+1}: ${text}`);const number=document.createElement('span');number.className='step-index';number.textContent=String(index+1).padStart(2,'0');const copy=document.createElement('span');copy.className='step-text';copy.textContent=index<shown?text:'Waiting for next step…';row.append(number,copy);return row}));const total=data.steps.length;statusText.textContent=shown===total?`Complete · ${total} of ${total} steps`:shown===0?`Ready · 0 of ${total} steps`:`Tracing · ${shown} of ${total} steps`;stepCount.textContent=`${shown} / ${total}`;progress.setAttribute('aria-valuemax',total);progress.setAttribute('aria-valuenow',shown);progressFill.style.width=`${total?shown/total*100:0}%`;nextButton.disabled=shown>=total;playButton.disabled=shown===total}
+function advance(){if(shown>=examples[selected].steps.length){stop();render();return}shown++;render();if(shown>=examples[selected].steps.length){stop();return}timer=setTimeout(advance,Number(speedSelect.value))}
+function start(){if(shown>=examples[selected].steps.length)shown=0;stop();playButton.textContent='Ⅱ Pause';playButton.setAttribute('aria-label','Pause trace');advance()}
+playButton.addEventListener('click',()=>{if(timer!==null){stop();return}if(shown>=examples[selected].steps.length){shown=0;render()}start()});nextButton.addEventListener('click',()=>{stop();if(shown>=examples[selected].steps.length)shown=0;shown++;render()});resetButton.addEventListener('click',()=>{stop();shown=0;render()});speedSelect.addEventListener('change',()=>{if(timer!==null){stop();start()}});
+tabs.forEach((tab,index)=>{tab.addEventListener('click',()=>selectExample(tab));tab.addEventListener('keydown',event=>{if(!['ArrowRight','ArrowLeft','Home','End'].includes(event.key))return;event.preventDefault();const next=event.key==='Home'?0:event.key==='End'?tabs.length-1:(index+(event.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;tabs[next].focus();selectExample(tabs[next])})});
+function selectExample(tab){stop();selected=tab.dataset.key;shown=0;tabs.forEach(item=>{const active=item===tab;item.setAttribute('aria-selected',String(active));item.tabIndex=active?0:-1});panel.setAttribute('aria-labelledby',tab.id);render()}
+document.getElementById('theme').addEventListener('click',()=>{const dark=document.documentElement.dataset.theme!=='dark';document.documentElement.dataset.theme=dark?'dark':'light';try{localStorage.setItem('youtri-theme',dark?'dark':'light')}catch{}});
+render();
+</script>
+</body>
+</html>
